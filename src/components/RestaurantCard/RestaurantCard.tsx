@@ -1,30 +1,67 @@
 import "./restaurantCard.scss";
 
-export const RestaurantCard = () => {
+export const RestaurantCard = ({ ...props }) => {
+  const data = props?.data;
+
+  const handleShowDeliverFee = () => {
+    switch (data?.deliveryFee) {
+      case 0:
+        return "رایگان";
+
+      default:
+        return data?.deliveryFee;
+    }
+  };
+
+  const handleShowShipping = () => {
+    switch (data?.isZFExpress) {
+      case true:
+        return "ارسال اکسپرس";
+
+      default:
+        return "پیک فروشنده";
+    }
+  };
+
   return (
     <div className="restaurant-card" id="restaurant-card">
       <div
         className="restaurant-card__header"
         style={{
-          backgroundImage:
-            "https://cdn.snappfood.ir/350x233/uploads/images/vendors/covers/6058c93d8399c.png"
+          backgroundImage: `url(${data?.backgroundImage})`,
         }}
       >
-        <div>salam</div>
-        <div className="restaurant-card__logo" style={{backgroundImage: 'https://cdn.snappfood.ir/350x233/uploads/images/vendors/covers/6058c93d8399c.png'}}>salam</div>
+        {data?.best_coupon && (
+          <div className="restaurant-card__badge">{data?.best_coupon}</div>
+        )}
+        <div
+          className="restaurant-card__logo"
+          style={{
+            backgroundImage: `url(${data?.defLogo})`,
+          }}
+        />
       </div>
 
       <div className="restaurant-card__body">
         <div className="restaurant-card__info">
-          <div className="restaurant-card__info-name">کبابی محمد</div>
-          <div></div>
+          <div className="restaurant-card__info-name">{data?.title}</div>
+          {data.rate !== 0 && (
+            <div className="restaurant-card__rate">
+              {data?.rate}
+              {/* {data?.voteCount} */}
+            </div>
+          )}
         </div>
 
-        <div className="restaurant-card__tag"></div>
+        <div className="restaurant-card__tag">{data?.description}</div>
 
         <div className="restaurant-card__shipping">
-          <div className="restaurant-card__shipping-title">ارسال اکسپرس</div>
-          <div className="restaurant-card__shipping-price">۵.۵۰۰ تومان</div>
+          <div className="restaurant-card__shipping-title">
+            {handleShowShipping()}
+          </div>
+          <div className="restaurant-card__shipping-price">
+            {handleShowDeliverFee()} تومان
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import { Home, Vendors } from "../../pages";
+import Home from "../../pages/Home";
+import Vendors from "../../pages/Vendors";
 
 interface route {
     path: string,

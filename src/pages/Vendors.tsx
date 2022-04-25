@@ -1,29 +1,63 @@
 import { RestaurantCard } from "../components/RestaurantCard";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllVendors } from "../store";
+import React, { useEffect } from "react";
+import InfiniteLoader from "react-window-infinite-loader";
+import { Filter, Loading, Sort } from "../components";
 
-export const Vendors = () => {
+const Vendors = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state.vendors);
+
+  useEffect(() => {
+    dispatch(getAllVendors());
+    // eslint-disable-next-line
+  }, []);
+
   const Row = ({ index, style }: any) => (
     <div style={style}>
-      <RestaurantCard />
+      <RestaurantCard {...state?.data?.data?.finalResult[index + 1]} />
     </div>
   );
-  
+
   return (
-      // <RestaurantCard />
-    <AutoSizer>
-      {({ height, width }) => (
-        <List
-          className="container"
-          direction="rtl"
-          height={height}
-          itemCount={10}
-          itemSize={258}
-          width={width}
+    <React.Fragment>
+      <Filter />
+      <Sort />
+      {state?.loading ? (
+        <Loading />
+      ) : (
+        <InfiniteLoader
+          isItemLoaded={(ind: any) => ind}
+          itemCount={state?.data?.data?.finalResult.length - 1}
+          loadMoreItems={(a, b) => {
+            console.log(b);
+          }}
         >
-          {Row}
-        </List>
+          {({ onItemsRendered, ref }) => (
+            <AutoSizer>
+              {({ height, width }) => (
+                <List
+                  ref={ref}
+                  className="container"
+                  direction="rtl"
+                  height={height}
+                  onItemsRendered={onItemsRendered}
+                  itemCount={state?.data?.data?.finalResult.length - 1}
+                  itemSize={250}
+                  width={width}
+                >
+                  {Row}
+                </List>
+              )}
+            </AutoSizer>
+          )}
+        </InfiniteLoader>
       )}
-    </AutoSizer>
+    </React.Fragment>
   );
 };
+
+export default Vendors;

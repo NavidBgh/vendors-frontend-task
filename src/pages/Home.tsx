@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { Button } from "../components";
 
-export const Home = () => {
+const Home = () => {
   const history = useHistory();
 
   const buttonClickHandler = () => {
@@ -17,3 +17,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
