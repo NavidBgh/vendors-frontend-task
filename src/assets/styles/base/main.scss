@@ -1,0 +1,22 @@
+html,
+body,
+#snappfood {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  direction: rtl;
+  text-align: right;
+  font-family: VazirFaNum;
+  background-color: $page-background;
+  color: $text-dark;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: VazirFaNum;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}

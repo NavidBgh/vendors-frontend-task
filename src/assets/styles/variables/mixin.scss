@@ -1,0 +1,27 @@
+@mixin card {
+  border-radius: 6px;
+  box-shadow: 0px 2px 12px 0px rgba($color: #000000, $alpha: 0.1);
+  border: 1px solid $border-color;
+  margin-bottom: 12px;
+  width: 400px;
+  max-width: calc(100% - 32px);
+  margin: auto;
+  overflow: hidden;
+}
+
+@mixin loading {
+  background-color: #cdcdcd;
+  animation: skeletonLoading 0.8s infinite;
+
+  @keyframes skeletonLoading {
+    0% {
+      background-color: #cdcdcd;
+    }
+    50% {
+      background-color: #dedede;
+    }
+    100% {
+      background-color: #cdcdcd;
+    }
+  }
+}

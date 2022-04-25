@@ -1,0 +1,21 @@
+@import "../../assets/styles/variables/index.scss";
+
+.loading {
+  @include card;
+  margin-top: 12px;
+
+  &__header {
+    height: 130px;
+    margin-bottom: 10px;
+    background-color: red;
+    @include loading;
+  }
+
+  &__row {
+    background-color: red;
+    height: 20px;
+    margin: 0 16px 10px;
+    border-radius: 6px;
+    @include loading;
+  }
+}

@@ -1,0 +1,89 @@
+@import "../../assets/styles/variables/index.scss";
+
+.restaurant-card {
+  @include card;
+
+  &__header {
+    height: 130px;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__badge {
+    background-color: #ffffff;
+    font-size: 11px;
+    color: $green;
+    border-radius: 15px 0 0 15px;
+    position: absolute;
+    max-width: calc(100% - 8px);
+    top: 10px;
+    right: 0;
+    padding: 4px 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    border-radius: 6px;
+    position: absolute;
+    right: 12px;
+    bottom: -12px;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0px 2px 12px 0px rgba($color: #000000, $alpha: 0.1);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 16px 12px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    &-name {
+      font-size: 14px;
+    }
+  }
+
+  &__tag {
+    font-size: 11px;
+    font-weight: 200;
+    min-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__rate {
+    background-color: rgba($color: $green, $alpha: 0.2);
+    font-size: 11px;
+    font-weight: 500;
+    color: $green;
+    padding: 2px 8px;
+    border-radius: 50px;
+  }
+
+  &__shipping {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+
+    &-title {
+      color: $text-light;
+      margin-left: 4px;
+    }
+  }
+}
