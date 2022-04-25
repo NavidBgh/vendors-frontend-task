@@ -1,0 +1,62 @@
+@import '../../assets/styles/variables/index.scss';
+
+.restaurant-card{
+    border-radius: 6px;
+    box-shadow: 0px 2px 12px 0px rgba($color: #000000, $alpha: 0.1);
+    border: 1px solid $border-color;
+    margin-bottom: 12px;
+    width: 400px;
+    max-width: calc(100% - 32px);
+    margin: auto;
+    overflow: hidden;
+
+    &__header{
+        height: 135px;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('https://cdn.snappfood.ir/350x233/uploads/images/vendors/covers/6058c93d8399c.png');
+    }
+
+    &__logo{
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border: 4px solid #ffffff;
+        border-radius: 6px;
+        position: absolute;
+        right: 12px;
+        bottom: -12px;
+        box-shadow: 0px 2px 12px 0px rgba($color: #000000, $alpha: 0.1);
+    }
+
+    &__body{
+        padding: 24px 16px 12px;
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 35px;
+
+        &-name{
+            font-size: 14px;
+        }
+    }
+
+    &__tag{
+
+    }
+
+    &__shipping{
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+
+        &-title{
+            color: $text-light;
+            margin-left: 4px;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import '../../assets/styles/variables/index.scss';
+
+.button{
+    border: 2px solid rgba($color: #ffffff, $alpha: 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    height: 38px;
+    padding: 0 16px;
+    cursor: pointer;
+
+    &--primary{
+        background-color: $primary;
+        color: #ffffff;
+    }
+}
