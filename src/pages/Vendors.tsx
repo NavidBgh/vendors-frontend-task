@@ -16,11 +16,22 @@ const Vendors = () => {
     // eslint-disable-next-line
   }, []);
 
-  const Row = ({ index, style }: any) => (
-    <div style={style}>
-      <RestaurantCard {...state?.data?.data?.finalResult[index + 1]} />
-    </div>
-  );
+  const Row = ({ index, style }: any) =>
+    !isItemLoaded(index) ? (
+      <Loading />
+    ) : (
+      <div style={style}>
+        <RestaurantCard {...state?.data?.data?.finalResult[index + 1]} />
+      </div>
+    );
+
+  const loadMoreItems = state?.loading
+    ? () => {}
+    : () => dispatch(getAllVendors('',state?.page));
+
+  const isItemLoaded = (index: number) => {
+    return !!state?.data?.data?.finalResult[index +1]
+  };
 
   return (
     <React.Fragment>
@@ -30,11 +41,9 @@ const Vendors = () => {
         <Loading />
       ) : (
         <InfiniteLoader
-          isItemLoaded={(ind: any) => ind}
-          itemCount={state?.data?.data?.finalResult.length - 1}
-          loadMoreItems={(a, b) => {
-            console.log(b);
-          }}
+          isItemLoaded={isItemLoaded}
+          itemCount={10}
+          loadMoreItems={loadMoreItems}
         >
           {({ onItemsRendered, ref }) => (
             <AutoSizer>

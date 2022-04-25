@@ -9,20 +9,15 @@ export const vendorsReducer = (state = initialState, action: any) => {
         case 'VENDORS_GET':
             return {
                 ...state,
-                data: action.payload,
-                loading: false
+                data: action.payload.result,
+                loading: false,
+                page: action.payload.page + 1
             }
 
         case 'VENDORS_LOADING':
             return {
                 ...state,
                 loading: true
-            }
-
-        case 'VENDORS_PAGINATION':
-            return {
-                ...state,
-                page: state.page + 1
             }
 
         default:
